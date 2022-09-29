@@ -1,0 +1,16 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Sample API Spec for Orders",
+        "title": "Orders API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Teguh Ridho Afdilla",
+            "email": "teguh.afdilla138@gmail.com"
+        },
+        "version": "v1.0"
+    },
+    "host": "localhost:4000",
+    "basePath": "/",
+    "paths": {}
+}

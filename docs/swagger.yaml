@@ -1,0 +1,12 @@
+basePath: /
+host: localhost:4000
+info:
+  contact:
+    email: teguh.afdilla138@gmail.com
+    name: Teguh Ridho Afdilla
+  description: Sample API Spec for Orders
+  termsOfService: http://swagger.io/terms/
+  title: Orders API
+  version: v1.0
+paths: {}
+swagger: "2.0"

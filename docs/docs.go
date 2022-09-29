@@ -19,7 +19,223 @@ const docTemplate = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {}
+    "paths": {
+        "/v1/order": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "order"
+                ],
+                "summary": "Get all order",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/views.GetAllPeopleSwagger"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "order"
+                ],
+                "summary": "Update data order",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Order ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Update New Order",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.DataReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/views.GetAllPeopleSwagger"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "order"
+                ],
+                "summary": "Add new order",
+                "parameters": [
+                    {
+                        "description": "Add New Order",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.DataReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/views.GetAllPeopleSwagger"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/order/{id}": {
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "order"
+                ],
+                "summary": "Delete data order",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Order ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/views.GetAllPeopleSwagger"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.DataReq": {
+            "type": "object",
+            "properties": {
+                "customer_name": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.ItemReq"
+                    }
+                }
+            }
+        },
+        "models.DataRes": {
+            "type": "object",
+            "properties": {
+                "customer_name": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Item"
+                    }
+                },
+                "order_id": {
+                    "type": "integer"
+                },
+                "ordered_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Item": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "item_code": {
+                    "type": "string"
+                },
+                "item_id": {
+                    "type": "integer"
+                },
+                "order_id": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.ItemReq": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "item_code": {
+                    "type": "string"
+                },
+                "item_id": {
+                    "type": "integer"
+                },
+                "quantity": {
+                    "type": "integer"
+                }
+            }
+        },
+        "views.GetAllPeopleSwagger": {
+            "type": "object",
+            "properties": {
+                "error": {},
+                "message": {
+                    "type": "string",
+                    "example": "GET_SUCCESS"
+                },
+                "payload": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.DataRes"
+                    }
+                },
+                "status": {
+                    "type": "integer",
+                    "example": 200
+                }
+            }
+        }
+    }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
@@ -29,7 +245,7 @@ var SwaggerInfo = &swag.Spec{
 	BasePath:         "/",
 	Schemes:          []string{},
 	Title:            "Orders API",
-	Description:      "Sample API Spec for Orders",
+	Description:      "Assignment 2 Kelas A",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
